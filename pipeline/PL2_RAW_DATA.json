@@ -21,7 +21,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "AzureSqlTable1",
+						"referenceName": "DS_AZSQLDB_METADATA",
 						"type": "DatasetReference"
 					}
 				}
