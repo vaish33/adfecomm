@@ -70,6 +70,35 @@
 									}
 								}
 							]
+						},
+						{
+							"value": "sql",
+							"activities": [
+								{
+									"name": "EXE_SQL_MIGRATION",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"waitOnCompletion": true
+									}
+								}
+							]
+						},
+						{
+							"value": "sftp"
+						},
+						{
+							"value": "snowflake"
+						},
+						{
+							"value": "json"
+						},
+						{
+							"value": "bulk"
 						}
 					]
 				}
