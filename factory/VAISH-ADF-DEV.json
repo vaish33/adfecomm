@@ -1,0 +1,15 @@
+{
+	"name": "VAISH-ADF-DEV",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "25aaeab5-8743-4a2f-b979-928c944c3296",
+		"tenantId": "89799d73-275b-4d07-9807-140bd11e4248"
+	}
+}
