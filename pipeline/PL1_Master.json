@@ -1,6 +1,48 @@
 {
 	"name": "PL1_Master",
 	"properties": {
+		"activities": [
+			{
+				"name": "SET_VAR_TRIGGER",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			},
+			{
+				"name": "EXEC_RAW_DATA",
+				"description": "PL2_RAW_DATA",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "SET_VAR_TRIGGER",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"parameters": {
+			"Trigger": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"Trigger_variable": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
