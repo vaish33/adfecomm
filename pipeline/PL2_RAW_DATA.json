@@ -89,16 +89,69 @@
 							]
 						},
 						{
-							"value": "sftp"
+							"value": "sftp",
+							"activities": [
+								{
+									"name": "EXEC_SFTP_PL",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"waitOnCompletion": true
+									}
+								}
+							]
 						},
 						{
-							"value": "snowflake"
+							"value": "snowflake",
+							"activities": [
+								{
+									"name": "Wait6",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 1
+									}
+								}
+							]
 						},
 						{
-							"value": "json"
+							"value": "json",
+							"activities": [
+								{
+									"name": "EXEC JSON FLAT",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"waitOnCompletion": true
+									}
+								}
+							]
 						},
 						{
-							"value": "bulk"
+							"value": "bulk",
+							"activities": [
+								{
+									"name": "EXEC_BULK_DIFF",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"waitOnCompletion": true
+									}
+								}
+							]
 						}
 					]
 				}
