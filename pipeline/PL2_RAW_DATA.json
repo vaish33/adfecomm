@@ -33,9 +33,20 @@
 			{
 				"name": "SWITCH_SOURCE",
 				"type": "Switch",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "LKUP_L2_TYPE",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
+					"on": {
+						"value": "@activity('LKUP_L2_TYPE').output.firstRow.L2_switch_type",
+						"type": "Expression"
+					},
 					"cases": [
 						{
 							"value": "CloudStorage",
