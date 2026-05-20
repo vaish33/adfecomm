@@ -38,7 +38,38 @@
 				"typeProperties": {
 					"cases": [
 						{
-							"value": "CloudStorage"
+							"value": "CloudStorage",
+							"activities": [
+								{
+									"name": "EXEC_PL3_DATA",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"waitOnCompletion": true
+									}
+								}
+							]
+						},
+						{
+							"value": "api",
+							"activities": [
+								{
+									"name": "EXEC RESTAPI PL",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"waitOnCompletion": true
+									}
+								}
+							]
 						}
 					]
 				}
