@@ -1,6 +1,17 @@
 {
 	"name": "PL4_2_EXCEL_PROCESSING",
 	"properties": {
+		"activities": [
+			{
+				"name": "WAIT_EXCEL_10_SEC",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 10
+				}
+			}
+		],
 		"annotations": []
 	}
 }
