@@ -17,9 +17,15 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
-							"value": "SELECT *\nFROM dbo.vb_tbl_job a\nJOIN dbo.vb_tbl_trigger b\n    ON a.trigger_id = b.trigger_id\nWHERE b.trigger_name = '@{pipeline().parameters.Trigger}'\n  AND a.l4_switch_type = 'csv'",
-							"type": "Expression"
+						"sqlReaderStoredProcedureName": "[dbo].[vb_get_job_dtls]",
+						"storedProcedureParameters": {
+							"TriggerName": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().parameters.Trigger",
+									"type": "Expression"
+								}
+							}
 						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
@@ -29,11 +35,127 @@
 						"type": "DatasetReference"
 					}
 				}
+			},
+			{
+				"name": "SP_START_LOG_ENTRY",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "LKUP_JOB_DETAILS",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "LS_AZSQLDB_METADATA",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SET_MAPPING_VARIABLE",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "SP_START_LOG_ENTRY",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "mapping_variable",
+					"value": {
+						"value": "Name: mapping_variable\nValue: @string(activity('LKUP_JOB_DETAILS').output.firstRow)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "COPY_CSV",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "SET_MAPPING_VARIABLE",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableStaging": false
+				}
+			},
+			{
+				"name": "SP-SUCCESS-LOG-ENTRY",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "COPY_CSV",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			},
+			{
+				"name": "SP-FAIL-LOG-ENTRY",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "COPY_CSV",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
 			}
 		],
 		"parameters": {
 			"Trigger": {
 				"type": "string"
+			}
+		},
+		"variables": {
+			"mapping_variable": {
+				"type": "String"
 			}
 		},
 		"annotations": []

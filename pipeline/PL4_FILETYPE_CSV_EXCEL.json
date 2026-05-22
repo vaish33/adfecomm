@@ -64,7 +64,13 @@
 											"referenceName": "PL4_1_CSV_PROCESSING",
 											"type": "PipelineReference"
 										},
-										"waitOnCompletion": true
+										"waitOnCompletion": true,
+										"parameters": {
+											"Trigger": {
+												"value": "Trigger = @pipeline().parameters.Trigger",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
@@ -85,7 +91,13 @@
 											"referenceName": "PL4_2_EXCEL_PROCESSING",
 											"type": "PipelineReference"
 										},
-										"waitOnCompletion": true
+										"waitOnCompletion": true,
+										"parameters": {
+											"Trigger": {
+												"value": "Trigger = @pipeline().parameters.Trigger",
+												"type": "Expression"
+											}
+										}
 									}
 								}
 							]
