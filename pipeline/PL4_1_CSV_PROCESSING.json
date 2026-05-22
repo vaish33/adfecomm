@@ -3,15 +3,35 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "WAIT_CSV_10_SEC",
-				"type": "Wait",
+				"name": "LKUP_JOB_DETAILS",
+				"type": "Lookup",
 				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"waitTimeInSeconds": 10
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_AZSQLDB_METADATA",
+						"type": "DatasetReference"
+					}
 				}
 			}
 		],
+		"parameters": {
+			"Trigger": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
