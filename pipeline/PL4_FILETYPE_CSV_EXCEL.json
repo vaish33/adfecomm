@@ -1,6 +1,45 @@
 {
 	"name": "PL4_FILETYPE_CSV_EXCEL",
 	"properties": {
+		"activities": [
+			{
+				"name": "LKUP_GET_FILETYPE_CSV_EXCEL",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "SELECT DISTINCT \n    a.l4_switch_type\nFROM dbo.vb_tbl_job a\nJOIN dbo.vb_tbl_trigger b\n    ON a.trigger_id = b.trigger_id\nWHERE b.trigger_name = '@{pipeline().parameters.Trigger}'\n",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_AZSQLDB_METADATA",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Switch_FILETYPE_CSV_EXCEL",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"cases": []
+				}
+			}
+		],
 		"parameters": {
 			"Trigger": {
 				"type": "string"
