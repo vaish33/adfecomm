@@ -1,0 +1,11 @@
+{
+	"name": "PL4_FILETYPE_CSV_EXCEL",
+	"properties": {
+		"parameters": {
+			"Trigger": {
+				"type": "string"
+			}
+		},
+		"annotations": []
+	}
+}
