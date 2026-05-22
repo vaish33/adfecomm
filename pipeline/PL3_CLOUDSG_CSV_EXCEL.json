@@ -1,0 +1,97 @@
+{
+	"name": "PL3_CLOUDSG_CSV_EXCEL",
+	"properties": {
+		"activities": [
+			{
+				"name": "LKUP_SRC_FILES",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			},
+			{
+				"name": "Switch_SRC_LOC_CSV_EXCEL",
+				"type": "Switch",
+				"dependsOn": [
+					{
+						"activity": "LKUP_SRC_FILES",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@activity('LKUP_SRC_FILES').output.firstRow.L3_switch_type",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "Azure",
+							"activities": [
+								{
+									"name": "Exec_file_CSV",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL4_FILETYPE_CSV_EXCEL",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true,
+										"parameters": {
+											"Trigger": {
+												"value": "pipeline().parameters.Trigger",
+												"type": "Expression"
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"value": "AWS",
+							"activities": [
+								{
+									"name": "Wait1",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 1
+									}
+								}
+							]
+						},
+						{
+							"value": "GCP",
+							"activities": [
+								{
+									"name": "Wait2",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 1
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"annotations": []
+	}
+}

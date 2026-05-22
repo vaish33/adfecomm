@@ -33,10 +33,64 @@
 			{
 				"name": "Switch_FILETYPE_CSV_EXCEL",
 				"type": "Switch",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "LKUP_GET_FILETYPE_CSV_EXCEL",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
-					"cases": []
+					"on": {
+						"value": "@activity('LKUP_GET_FILETYPE_CSV_EXCEL').output.firstRow.l4_switch_type",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "csv",
+							"activities": [
+								{
+									"name": "EXEC_PL4_1_CSV",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL4_1_CSV_PROCESSING",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						},
+						{
+							"value": "excel",
+							"activities": [
+								{
+									"name": "EXEC_PL4_2_EXCEL",
+									"type": "ExecutePipeline",
+									"dependsOn": [],
+									"policy": {
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL4_2_EXCEL_PROCESSING",
+											"type": "PipelineReference"
+										},
+										"waitOnCompletion": true
+									}
+								}
+							]
+						}
+					]
 				}
 			}
 		],
