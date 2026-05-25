@@ -134,11 +134,28 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
-						"referenceName": "DelimitedText1",
+						"referenceName": "DS_AZADLS_CVCOPY_CLOUD_SRC",
 						"type": "DatasetReference",
 						"parameters": {
 							"storage_account_uc": {
@@ -151,6 +168,26 @@
 							},
 							"Filename": {
 								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.sourcefile",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_AZADLS_CVCOPY_CLOUD_RAW",
+						"type": "DatasetReference",
+						"parameters": {
+							"storage_account_loc": {
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.targetdata",
+								"type": "Expression"
+							},
+							"directory": {
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.targetdirectory",
+								"type": "Expression"
+							},
+							"filename": {
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.targetfile",
 								"type": "Expression"
 							}
 						}
