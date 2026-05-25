@@ -98,7 +98,7 @@
 				"typeProperties": {
 					"variableName": "mapping_variable",
 					"value": {
-						"value": "Name: mapping_variable\nValue: @string(activity('LKUP_JOB_DETAILS').output.firstRow)",
+						"value": "@string('{\n  \"type\": \"TabularTranslator\",\n  \"mappings\": [\n    {\n      \"source\": {\n        \"name\": \"order_id\"\n      },\n      \"sink\": {\n        \"name\": \"OrderID\"\n      }\n    },\n    {\n      \"source\": {\n        \"name\": \"order_purchase_timestamp\"\n      },\n      \"sink\": {\n        \"name\": \"OrderPurchaseTimestamp\"\n      }\n    },\n    {\n      \"source\": {\n        \"name\": \"delivered_customer_date\"\n      },\n      \"sink\": {\n        \"name\": \"OrderDeliveredCustomerDate\"\n      }\n    }\n  ]\n}')",
 						"type": "Expression"
 					}
 				}
