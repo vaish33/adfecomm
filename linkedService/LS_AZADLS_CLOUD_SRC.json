@@ -1,0 +1,10 @@
+{
+	"name": "LS_AZADLS_CLOUD_SRC",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://adlsvaishcsvsrc01.dfs.core.windows.net/"
+		}
+	}
+}
