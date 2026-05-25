@@ -104,7 +104,7 @@
 				}
 			},
 			{
-				"name": "DS_AZADLS_CVCOPY_CLOUD_SRC",
+				"name": "COPY_CSV",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -199,7 +199,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "DS_AZADLS_CVCOPY_CLOUD_SRC",
+						"activity": "COPY_CSV",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -246,7 +246,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "DS_AZADLS_CVCOPY_CLOUD_SRC",
+						"activity": "COPY_CSV",
 						"dependencyConditions": [
 							"Failed"
 						]
