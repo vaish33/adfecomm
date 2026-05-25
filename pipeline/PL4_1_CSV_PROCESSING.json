@@ -139,7 +139,21 @@
 				"inputs": [
 					{
 						"referenceName": "DelimitedText1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"storage_account_uc": {
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.sourcedata",
+								"type": "Expression"
+							},
+							"col_delimiter": {
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.delimiter",
+								"type": "Expression"
+							},
+							"Filename": {
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.sourcefile",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
