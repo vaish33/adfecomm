@@ -1,0 +1,34 @@
+{
+	"name": "DS_AZADLS_EXCELCOPY_CLOUD_RAW",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZADLS_CLOUD_SRC",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"storage_account_loc": {
+				"type": "string"
+			},
+			"directory": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@dataset().directory",
+					"type": "Expression"
+				},
+				"fileSystem": {
+					"value": "@dataset().storage_account_loc",
+					"type": "Expression"
+				}
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
