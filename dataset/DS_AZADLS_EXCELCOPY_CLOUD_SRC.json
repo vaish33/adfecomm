@@ -19,9 +19,16 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
+			"sheetName": {
+				"value": "@dataset().sheetname",
+				"type": "Expression"
+			},
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "sample.xlsx",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
 				"folderPath": "input",
 				"fileSystem": {
 					"value": "@dataset().storage_account_loc",

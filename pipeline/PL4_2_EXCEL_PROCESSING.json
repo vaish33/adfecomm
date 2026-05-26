@@ -99,8 +99,22 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"source": {
+						"type": "ExcelSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						}
+					},
 					"enableStaging": false
-				}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_AZADLS_EXCELCOPY_CLOUD_SRC",
+						"type": "DatasetReference"
+					}
+				]
 			},
 			{
 				"name": "SP-SUCCESS-LOG-ENTRY",
