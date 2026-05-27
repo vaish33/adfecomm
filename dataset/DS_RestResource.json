@@ -9,7 +9,7 @@
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "/pet/findByStatus?status=available",
+				"value": "v2/pet/findByStatus?status=available",
 				"type": "Expression"
 			}
 		},
