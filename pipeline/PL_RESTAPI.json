@@ -44,7 +44,17 @@
 				"outputs": [
 					{
 						"referenceName": "DS_REST_Parquet",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"storage_account_loc": {
+								"value": "output",
+								"type": "Expression"
+							},
+							"directory": {
+								"value": "@concat('rest/', formatDateTime(utcNow(),'yyyy'), '/', formatDateTime(utcNow(),'MM'), '/', formatDateTime(utcNow(),'dd'))",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
