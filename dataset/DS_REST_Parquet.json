@@ -5,13 +5,24 @@
 			"referenceName": "LS_AZADLS_CLOUD_SRC",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"storage_account_loc": {
+				"type": "string"
+			},
+			"directory": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "rest",
-				"fileSystem": "output"
+				"folderPath": {
+					"value": "@dataset().directory",
+					"type": "Expression"
+				},
+				"fileSystem": "@dataset().storage_account_loc"
 			},
 			"compressionCodec": "snappy"
 		},
