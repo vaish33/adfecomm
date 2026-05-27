@@ -46,7 +46,17 @@
 				"outputs": [
 					{
 						"referenceName": "DS_AZADLS_JSON_CLOUD_RAW",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"storage_account_loc": {
+								"value": "output",
+								"type": "Expression"
+							},
+							"directory": {
+								"value": "@concat('json/', formatDateTime(utcNow(),'yyyy'), '/', formatDateTime(utcNow(),'MM'), '/', formatDateTime(utcNow(),'dd'))",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
