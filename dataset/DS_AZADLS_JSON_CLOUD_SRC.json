@@ -1,0 +1,20 @@
+{
+	"name": "DS_AZADLS_JSON_CLOUD_SRC",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZADLS_CLOUD_SRC",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "sample.json",
+				"folderPath": "input",
+				"fileSystem": "source"
+			}
+		},
+		"schema": {}
+	}
+}
