@@ -1,0 +1,20 @@
+{
+	"name": "DS_REST_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZADLS_CLOUD_SRC",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "rest",
+				"fileSystem": "output"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

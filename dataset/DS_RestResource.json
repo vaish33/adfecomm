@@ -5,6 +5,14 @@
 			"referenceName": "LS_RestService1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"storage_account_loc": {
+				"type": "string"
+			},
+			"directory": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
