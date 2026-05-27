@@ -38,13 +38,7 @@
 				"inputs": [
 					{
 						"referenceName": "DS_RestResource",
-						"type": "DatasetReference",
-						"parameters": {
-							"directory": {
-								"value": "rest",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
