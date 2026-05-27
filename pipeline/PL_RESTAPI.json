@@ -51,7 +51,7 @@
 								"type": "Expression"
 							},
 							"directory": {
-								"value": "@concat('rest/', formatDateTime(utcNow(),'yyyy'), '/', formatDateTime(utcNow(),'MM'), '/', formatDateTime(utcNow(),'dd'))",
+								"value": "rest",
 								"type": "Expression"
 							}
 						}
