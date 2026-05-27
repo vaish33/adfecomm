@@ -1,0 +1,20 @@
+{
+	"name": "DS_AZADLS_JSON_CLOUD_RAW",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_AZADLS_CLOUD_SRC",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "json",
+				"fileSystem": "output"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
