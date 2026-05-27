@@ -7,10 +7,12 @@
 		},
 		"parameters": {
 			"storage_account_loc": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "output"
 			},
 			"directory": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "rest"
 			}
 		},
 		"annotations": [],
