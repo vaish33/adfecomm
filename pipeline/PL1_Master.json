@@ -46,7 +46,7 @@
 		"parameters": {
 			"Trigger": {
 				"type": "string",
-				"defaultValue": "manual"
+				"defaultValue": "@pipeline().parameters.Trigger"
 			}
 		},
 		"variables": {
