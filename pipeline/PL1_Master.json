@@ -22,13 +22,7 @@
 						"referenceName": "PL2_RAW_DATA",
 						"type": "PipelineReference"
 					},
-					"waitOnCompletion": true,
-					"parameters": {
-						"Trigger": {
-							"value": "@variables('trigger_value')\n",
-							"type": "Expression"
-						}
-					}
+					"waitOnCompletion": true
 				}
 			},
 			{
