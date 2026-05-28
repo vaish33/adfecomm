@@ -46,7 +46,7 @@
 		"parameters": {
 			"Trigger": {
 				"type": "string",
-				"defaultValue": "@variables('trigger_value')"
+				"defaultValue": "manual "
 			}
 		},
 		"variables": {
