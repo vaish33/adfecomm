@@ -60,6 +60,10 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL3_CLOUDSG_CSV_EXCEL",
+											"type": "PipelineReference"
+										},
 										"waitOnCompletion": true
 									}
 								}
@@ -77,6 +81,10 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_RESTAPI",
+											"type": "PipelineReference"
+										},
 										"waitOnCompletion": true
 									}
 								}
@@ -142,6 +150,10 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_JSON",
+											"type": "PipelineReference"
+										},
 										"waitOnCompletion": true
 									}
 								}
