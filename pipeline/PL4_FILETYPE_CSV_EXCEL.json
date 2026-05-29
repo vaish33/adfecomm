@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT DISTINCT \n    a.l4_switch_type\nFROM dbo.vb_tbl_job a\nJOIN dbo.vb_tbl_trigger b\n    ON a.trigger_id = b.trigger_id\nWHERE b.trigger_name = '@{pipeline().parameters.Trigger}'\n",
+							"value": "SELECT 'CSV' AS L4_switch_type",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
