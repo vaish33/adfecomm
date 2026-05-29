@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT\n    1 AS jobid,\n    1 AS job_id,\n    3 AS row_count,\n    '' AS source_data,\n    '' AS storage_account_uc,\n    ',' AS col_delimiter,\n    'sample.csv' AS Filename,\n    'output' AS storage_account_loc,\n    'csv' AS directory,\n    'sample_output.csv' AS filename",
+							"value": "SELECT\n    1 AS jobid,\n    1 AS job_id,\n    3 AS row_count,\n    '' AS storage_account_uc,\n    ',' AS col_delimiter,\n    'sample.csv' AS Filename,\n    'output' AS storage_account_loc,\n    'csv' AS directory,\n    'sample_output.csv' AS filename",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -153,15 +153,15 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"storage_account_uc": {
-								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.sourcedata",
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.storage_account_uc",
 								"type": "Expression"
 							},
 							"col_delimiter": {
-								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.delimiter",
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.col_delimiter",
 								"type": "Expression"
 							},
 							"Filename": {
-								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.sourcefile",
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.Filename",
 								"type": "Expression"
 							}
 						}
@@ -173,15 +173,15 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"storage_account_loc": {
-								"value": "output",
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.storage_account_loc",
 								"type": "Expression"
 							},
 							"directory": {
-								"value": "csv",
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.directory",
 								"type": "Expression"
 							},
 							"filename": {
-								"value": "sample_output.csv",
+								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.filename",
 								"type": "Expression"
 							}
 						}
