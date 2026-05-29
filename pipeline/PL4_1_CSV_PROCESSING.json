@@ -179,15 +179,15 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"storage_account_loc": {
-								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.targetdata",
+								"value": "output",
 								"type": "Expression"
 							},
 							"directory": {
-								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.targetdirectory",
+								"value": "csv",
 								"type": "Expression"
 							},
 							"filename": {
-								"value": "@activity('LKUP_JOB_DETAILS').output.firstRow.targetfile",
+								"value": "sample_output.csv",
 								"type": "Expression"
 							}
 						}
