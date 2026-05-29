@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT 'CSV' AS L4_switch_type",
+							"value": "SELECT 'csv' AS L4_switch_type",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -44,7 +44,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"on": {
-						"value": "@activity('LKUP_GET_FILETYPE_CSV_EXCEL').output.firstRow.l4_switch_type",
+						"value": "@toLower(trim(activity('LKUP_GET_FILETYPE_CSV_EXCEL').output.firstRow.l4_switch_type))",
 						"type": "Expression"
 					},
 					"cases": [
