@@ -17,15 +17,9 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderStoredProcedureName": "[dbo].[vb_get_job_dtls]",
-						"storedProcedureParameters": {
-							"TriggerName": {
-								"type": "String",
-								"value": {
-									"value": "@pipeline().parameters.Trigger",
-									"type": "Expression"
-								}
-							}
+						"sqlReaderQuery": {
+							"value": "SELECT\n    '' AS storage_account_uc,\n    ',' AS col_delimiter,\n    'sample.csv' AS Filename,\n    'output' AS storage_account_loc,\n    'csv' AS directory,\n    'sample_output.csv' AS filename",
+							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
