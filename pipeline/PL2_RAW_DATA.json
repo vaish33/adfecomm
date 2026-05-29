@@ -123,6 +123,10 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_SFTP",
+											"type": "PipelineReference"
+										},
 										"waitOnCompletion": true
 									}
 								}
