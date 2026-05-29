@@ -1,0 +1,17 @@
+{
+	"name": "PL_BULK_DIFF",
+	"properties": {
+		"activities": [
+			{
+				"name": "WAIT_BULK_DIFF_PLACEHOLDER",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			}
+		],
+		"annotations": []
+	}
+}
