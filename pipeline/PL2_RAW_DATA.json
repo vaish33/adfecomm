@@ -102,6 +102,10 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_SQL_MIGRATION",
+											"type": "PipelineReference"
+										},
 										"waitOnCompletion": true
 									}
 								}
