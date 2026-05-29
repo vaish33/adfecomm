@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "SELECT\n    '' AS storage_account_uc,\n    ',' AS col_delimiter,\n    'sample.csv' AS Filename,\n    'output' AS storage_account_loc,\n    'csv' AS directory,\n    'sample_output.csv' AS filename",
+							"value": "SELECT\n    'TEST_JOB_001' AS job_id,\n    '' AS storage_account_uc,\n    ',' AS col_delimiter,\n    'sample.csv' AS Filename,\n    'output' AS storage_account_loc,\n    'csv' AS directory,\n    'sample_output.csv' AS filename",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
