@@ -1,0 +1,17 @@
+{
+	"name": "PL_SFTP",
+	"properties": {
+		"activities": [
+			{
+				"name": "WAIT_SFTP_PLACEHOLDER",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			}
+		],
+		"annotations": []
+	}
+}
