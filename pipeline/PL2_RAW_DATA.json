@@ -179,6 +179,10 @@
 									},
 									"userProperties": [],
 									"typeProperties": {
+										"pipeline": {
+											"referenceName": "PL_BULK_DIFF",
+											"type": "PipelineReference"
+										},
 										"waitOnCompletion": true
 									}
 								}
